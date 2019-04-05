@@ -233,7 +233,7 @@ class RepositoryDecorator implements RepositoryDecoratorInterface
    */
     public function wrapEntity($entity)
     {
-        if (!is_object($entity) || get_class($entity) !== $this->getClassName()) {
+        if (!is_object($entity) || (get_class($entity) !== $this->getClassName() && !is_subclass_of($entity, $this->getClassName()))) {
             return $entity;
         }
 
